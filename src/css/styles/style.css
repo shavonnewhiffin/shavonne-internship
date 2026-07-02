@@ -12223,6 +12223,39 @@ a.read_more i {
   overflow: none;
 }
 
+
+/* hot collections */
+
+.skeleton {
+  background-color: rgb(227, 227, 227) 
+}
+
+.carousel__image--skeleton {
+ position: relative;
+  width: 100%;
+  max-width: 350px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 20%;
+}
+
+
+.carousel__authorImage--skeleton {
+width: 55px;
+height: 55px;
+border-radius: 50%;
+}
+
+.carousel__title--skeleton {
+width: 150px;
+height: 19px;
+}
+
+.carousel__id--skeleton {
+width: 80px;
+height: 19px;
+}
+
 /* new table */
 
 .de_table {
