@@ -1,9 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import AuthorImage from "../../images/author_thumbnail.jpg";
 import nftImage from "../../images/nftImage.jpg";
+import axios from "axios";
 
 const NewItems = () => {
+
+const [newItems, setNewItems] = useState([])
+const [loading, setLoading] = useState(true)
+
+useEffect(() => {
+  fetchNewItems();
+}, [])
+
+  async function fetchNewItems() {
+    try {
+      const { data } = await axios.get(
+            "https://us-central1-nft-cloud-functions.cloudfunctions.net/newItems"
+          );
+          setNewItems(data)
+          setLoading(false)
+        } catch {
+          setLoading(false)
+          console.error("There was an error fetching New Items");
+        }
+      }
+
   return (
     <section id="section-items" className="no-bottom">
       <div className="container">
@@ -14,9 +36,9 @@ const NewItems = () => {
               <div className="small-border bg-color-2"></div>
             </div>
           </div>
-          {new Array(4).fill(0).map((_, index) => (
-            <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12" key={index}>
-              <div className="nft__item">
+          {newItems.map(({ authorImage, likes, nftImage, price, title, expiryDate, nftId }) => (
+            <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12" key={nftId}>
+              <div className="nft__item" key={nftId}>
                 <div className="author_list_pp">
                   <Link
                     to="/author"
@@ -24,11 +46,11 @@ const NewItems = () => {
                     data-bs-placement="top"
                     title="Creator: Monica Lucas"
                   >
-                    <img className="lazy" src={AuthorImage} alt="" />
+                    <img className="lazy" src={authorImage} alt="" />
                     <i className="fa fa-check"></i>
                   </Link>
                 </div>
-                <div className="de_countdown">5h 30m 32s</div>
+                <div className="de_countdown">{expiryDate}</div>
 
                 <div className="nft__item_wrap">
                   <div className="nft__item_extra">
@@ -59,12 +81,12 @@ const NewItems = () => {
                 </div>
                 <div className="nft__item_info">
                   <Link to="/item-details">
-                    <h4>Pinky Ocean</h4>
+                    <h4>{title}</h4>
                   </Link>
-                  <div className="nft__item_price">3.08 ETH</div>
+                  <div className="nft__item_price">{price} ETH</div>
                   <div className="nft__item_like">
                     <i className="fa fa-heart"></i>
-                    <span>69</span>
+                    <span>{likes}</span>
                   </div>
                 </div>
               </div>
