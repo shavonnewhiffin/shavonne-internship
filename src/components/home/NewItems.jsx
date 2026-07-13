@@ -8,9 +8,15 @@ const NewItems = () => {
 
 const [newItems, setNewItems] = useState([])
 const [loading, setLoading] = useState(true)
+const [now, setNow] = useState(Date.now())
 
 useEffect(() => {
   fetchNewItems();
+}, [])
+
+useEffect(() => {
+  const interval = setInterval(() => setNow(Date.now()), 1000);
+  return () => clearInterval(interval);
 }, [])
 
   async function fetchNewItems() {
@@ -26,6 +32,14 @@ useEffect(() => {
         }
       }
 
+      function getCountdown(expiryDate, now){
+        const timeLeft = expiryDate - now;
+        const hours = Math.floor(timeLeft / (1000 * 60 * 60));
+        const minutes = Math.floor((timeLeft / (1000 * 60)) % 60);
+        const seconds = Math.floor((timeLeft / 1000) % 60);
+        return { hours, minutes, seconds };
+      }
+
   return (
     <section id="section-items" className="no-bottom">
       <div className="container">
@@ -36,12 +50,13 @@ useEffect(() => {
               <div className="small-border bg-color-2"></div>
             </div>
           </div>
-          {newItems.map(({ authorImage, likes, nftImage, price, title, expiryDate, nftId }) => (
-            <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12" key={nftId}>
+          {newItems.map(({ authorImage, likes, nftImage, price, title, expiryDate, nftId, authorId }) => {
+                  const countdown = expiryDate ? getCountdown(expiryDate, now) : null;
+            return ( <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12" key={nftId}>
               <div className="nft__item" key={nftId}>
                 <div className="author_list_pp">
                   <Link
-                    to="/author"
+                    to={`/author/${authorId}`}
                     data-bs-toggle="tooltip"
                     data-bs-placement="top"
                     title="Creator: Monica Lucas"
@@ -50,7 +65,9 @@ useEffect(() => {
                     <i className="fa fa-check"></i>
                   </Link>
                 </div>
-                <div className="de_countdown">{expiryDate}</div>
+                {countdown && (
+                  <div className="de_countdown">{countdown.hours}h:{countdown.minutes}m:{countdown.seconds}s</div>
+                )}
 
                 <div className="nft__item_wrap">
                   <div className="nft__item_extra">
@@ -90,8 +107,8 @@ useEffect(() => {
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            </div>);
+          })}
         </div>
       </div>
     </section>
