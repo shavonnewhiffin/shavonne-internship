@@ -3,6 +3,25 @@ import { Link } from "react-router-dom";
 import AuthorImage from "../../images/author_thumbnail.jpg";
 import nftImage from "../../images/nftImage.jpg";
 import axios from "axios";
+import OwlCarousel from "react-owl-carousel";
+import "owl.carousel/dist/assets/owl.carousel.css";
+import "owl.carousel/dist/assets/owl.theme.default.css";
+
+
+const carouselOptions = {
+  className: "owl-theme",
+  loop: true,
+  nav: true,
+  dots: false,
+  margin: 8,
+  navText: ["<", ">"],
+  responsive: {
+    0: { items: 1 },
+    572: { items: 2 },
+    992: { items: 3 },
+    1200: { items: 4 },
+  },
+};
 
 const NewItems = () => {
 
@@ -50,9 +69,10 @@ useEffect(() => {
               <div className="small-border bg-color-2"></div>
             </div>
           </div>
+          <OwlCarousel {...carouselOptions}>
           {newItems.map(({ authorImage, likes, nftImage, price, title, expiryDate, nftId, authorId }) => {
                   const countdown = expiryDate ? getCountdown(expiryDate, now) : null;
-            return ( <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12" key={nftId}>
+            return ( <div key={nftId}>
               <div className="nft__item" key={nftId}>
                 <div className="author_list_pp">
                   <Link
@@ -109,6 +129,7 @@ useEffect(() => {
               </div>
             </div>);
           })}
+          </OwlCarousel>
         </div>
       </div>
     </section>
