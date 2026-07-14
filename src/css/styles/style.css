@@ -12224,7 +12224,7 @@ a.read_more i {
 }
 
 
-/* hot collections */
+/* hot collections skeleton */
 
 .skeleton {
   background: linear-gradient(90deg, #eceff1 40%, #f6f7f8 50%, #eceff1 60%);
@@ -12265,6 +12265,69 @@ margin: 0 auto;
 width: 80px;
 height: 19px;
 margin: 0 auto;
+}
+
+.skeleton-box {
+  display: inline-block;
+  height: 1em;
+  position: relative;
+  overflow: hidden;
+  background-color: #dddbdd;
+}
+
+.skeleton-box::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 255, 255, 0.2) 20%,
+    rgba(255, 255, 255, 0.5) 60%,
+    rgba(255, 255, 255, 0)
+  );
+  -webkit-animation: shimmer 2s infinite;
+  animation: shimmer 2s infinite;
+  content: "";
+}
+@-webkit-keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* new items skeleton */
+
+.newItems__img--skeleton {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 350px;
+  height: 325px;
+  overflow: hidden;
+}
+
+.newItems__title--skeleton {
+width: 150px;
+height: 40px;
+}
+
+.newItems__price--skeleton {
+  width: 80px;
+  height: 19px;
+}
+
+.newItems__like--skeleton {
+  width: 30px;
+  height: 19px;
 }
 
 /* new table */
@@ -16314,6 +16377,25 @@ img {
   }
 }
 
+/* screensizes below 571px */
+
+@media (max-width: 571px){
+  .nft__item {
+    position: relative;
+    padding: 60px;
+    border: solid 1px #ddd;
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    margin-bottom: 25px;
+    background: #ffffff;
+  }
+
+  .nft__item h4 {
+    margin-top: 50px;
+  }
+}
+
 /* -------------------------------------------------- 
     custom for 320px & 480px 
     /* -------------------------------------------------- */
@@ -16691,43 +16773,6 @@ img {
   .container-timeline ul li::before {
     left: 0;
     top: -21px;
-  }
-}
-
-.skeleton-box {
-  display: inline-block;
-  height: 1em;
-  position: relative;
-  overflow: hidden;
-  background-color: #dddbdd;
-}
-
-.skeleton-box::after {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  transform: translateX(-100%);
-  background-image: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0,
-    rgba(255, 255, 255, 0.2) 20%,
-    rgba(255, 255, 255, 0.5) 60%,
-    rgba(255, 255, 255, 0)
-  );
-  -webkit-animation: shimmer 2s infinite;
-  animation: shimmer 2s infinite;
-  content: "";
-}
-@-webkit-keyframes shimmer {
-  100% {
-    transform: translateX(100%);
-  }
-}
-@keyframes shimmer {
-  100% {
-    transform: translateX(100%);
   }
 }
 
