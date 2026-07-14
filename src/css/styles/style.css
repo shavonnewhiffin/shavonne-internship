@@ -12330,6 +12330,25 @@ height: 40px;
   height: 19px;
 }
 
+/* top sellers skeleton */
+
+.topSellers__authorImage--skeleton {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  }
+
+  .topSellers__title--skeleton {
+    width: 100px;
+    height: 16px;
+    margin-bottom: 8px;
+  }
+
+  .topSellers__price--skeleton {
+    width: 80px;
+    height: 16px;
+  }
+
 /* new table */
 
 .de_table {

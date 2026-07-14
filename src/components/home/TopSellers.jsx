@@ -40,18 +40,14 @@ const TopSellers = () => {
               {loading ? new Array(12).fill(0).map((_, index) => (
                 <li key={index}>
                   <div className="author_list_pp">
-                    <Link to="/author">
-                      <img
-                        className="lazy pp-author"
-                        src={AuthorImage}
-                        alt=""
+                      <div
+                        className="lazy pp-author topSellers__authorImage--skeleton skeleton"
                       />
                       <i className="fa fa-check"></i>
-                    </Link>
                   </div>
                   <div className="author_list_info">
-                    <Link to="/author">Monica Lucas</Link>
-                    <span>2.1 ETH</span>
+                    <div className="topSellers__title--skeleton skeleton"></div>
+                    <span className="topSellers__price--skeleton skeleton"></span>
                   </div>
                 </li>
               )):(
