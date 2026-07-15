@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import AuthorImage from "../../images/author_thumbnail.jpg";
-import nftImage from "../../images/nftImage.jpg";
 import axios from "axios";
 import Card from "../UI/Card";
 
-
 const ExploreItems = () => {
-
   const [exploreItems, setExploreItems] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -16,14 +12,17 @@ const ExploreItems = () => {
   }, []);
 
   async function fetchExploreItems() {
-   try { const { data } = await axios.get("https://us-central1-nft-cloud-functions.cloudfunctions.net/explore");
-   setExploreItems(data);
-   setLoading(false);
-    console.log(data)
-  } catch {
-    setLoading(false);
-    console.error("There was an error fetching Explore Items");
-  }
+    try {
+      const { data } = await axios.get(
+        "https://us-central1-nft-cloud-functions.cloudfunctions.net/explore"
+      );
+
+      setExploreItems(data);
+    } catch (error) {
+      console.error("There was an error fetching Explore Items", error);
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -36,15 +35,27 @@ const ExploreItems = () => {
           <option value="likes_high_to_low">Most liked</option>
         </select>
       </div>
-          {exploreItems.map((item) => (
-        <div
-          className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12"
-          style={{ display: "block", backgroundSize: "cover" }}
-          >
-          <Card key={item.nftId
-          } {...item}/>
-          </div>
+
+      {loading
+        ? new Array(16).fill(0).map((_, index) => (
+            <div
+              key={index}
+              className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12"
+              style={{ display: "block", backgroundSize: "cover" }}
+            >
+              <div className="exploreItems__img--skeleton skeleton" />
+            </div>
+          ))
+        : exploreItems.map((item, index) => (
+            <div
+              key={item.nftId || index}
+              className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12"
+              style={{ display: "block", backgroundSize: "cover" }}
+            >
+              <Card {...item} />
+            </div>
           ))}
+
       <div className="col-md-12 text-center">
         <Link to="" id="loadmore" className="btn-main lead">
           Load more
