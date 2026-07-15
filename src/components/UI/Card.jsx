@@ -1,34 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-
-function Countdown({ expiryDate }) {
-  const [now, setNow] = useState(Date.now());
-
-  useEffect(() => {
-    const interval = setInterval(function () {
-      setNow(Date.now());
-    }, 1000);
-
-    return function () {
-      clearInterval(interval);
-    };
-  }, []);
-
-  if (!expiryDate) {
-    return null;
-  }
-
-  const timeLeft = expiryDate - now;
-  const hours = Math.floor(timeLeft / (1000 * 60 * 60));
-  const minutes = Math.floor((timeLeft / (1000 * 60)) % 60);
-  const seconds = Math.floor((timeLeft / 1000) % 60);
-
-  return (
-    <div className="de_countdown">
-      {hours}h:{minutes}m:{seconds}s
-    </div>
-  );
-}
+import Countdown from "./Countdown";
 
 const Card = ({
   authorImage,
@@ -56,7 +28,6 @@ const Card = ({
             </Link>
           </div>
           <Countdown expiryDate={expiryDate} />
-
           <div className="nft__item_wrap">
             <div className="nft__item_extra">
               <div className="nft__item_buttons">
