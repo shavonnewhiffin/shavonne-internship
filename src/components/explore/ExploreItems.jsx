@@ -6,6 +6,7 @@ import Card from "../UI/Card";
 const ExploreItems = () => {
   const [exploreItems, setExploreItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [visibleItems, setVisibleItems] = useState(8);
 
   useEffect(() => {
     fetchExploreItems();
@@ -25,6 +26,10 @@ const ExploreItems = () => {
     }
   }
 
+function loadMoreItems() {
+  setVisibleItems((prevVisible)=> prevVisible + 4);
+}
+
   return (
     <>
       <div>
@@ -36,7 +41,6 @@ const ExploreItems = () => {
         </select>
       </div>
 
-      {/* 1. Wrap the conditional rendering in a "row" div */}
       {loading
   ? new Array(16).fill(0).map((_, index) => (
       <div
@@ -49,7 +53,7 @@ const ExploreItems = () => {
         </div>
       </div>
     ))
-  : exploreItems.map((item, index) => (
+  : exploreItems.slice(0, visibleItems).map((item, index) => (
       <div
         key={item.nftId || index}
         className="d-item col-lg-3 col-md-6 col-sm-6 col-12"
@@ -60,9 +64,9 @@ const ExploreItems = () => {
     ))}
 
       <div className="col-md-12 text-center">
-        <Link to="" id="loadmore" className="btn-main lead">
+        {visibleItems < exploreItems.length && (<button onClick={loadMoreItems} id="loadmore" className="btn-main lead">
           Load more
-        </Link>
+        </button>)}
       </div>
     </>
   );
