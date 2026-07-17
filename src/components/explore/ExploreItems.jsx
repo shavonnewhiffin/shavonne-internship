@@ -17,7 +17,6 @@ const ExploreItems = () => {
       const { data } = await axios.get(
         "https://us-central1-nft-cloud-functions.cloudfunctions.net/explore"
       );
-
       setExploreItems(data);
     } catch (error) {
       console.error("There was an error fetching Explore Items", error);
@@ -30,10 +29,25 @@ function loadMoreItems() {
   setVisibleItems((prevVisible)=> prevVisible + 4);
 }
 
+async function filterNfts(value) {
+  setLoading(true);
+  try {
+    const { data } = await axios.get(
+      `https://us-central1-nft-cloud-functions.cloudfunctions.net/explore?filter=${value}`
+    )
+    setExploreItems(data);
+  } catch(error){
+    console.error("There was an error filtering Explore Items", error);
+  }
+  finally {
+    setLoading(false);
+  }
+}
+
   return (
     <>
       <div>
-        <select id="filter-items" defaultValue="">
+        <select id="filter-items" defaultValue="" onChange={(event) => filterNfts(event.target.value)}>
           <option value="">Default</option>
           <option value="price_low_to_high">Price, Low to High</option>
           <option value="price_high_to_low">Price, High to Low</option>
