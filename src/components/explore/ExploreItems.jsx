@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Card from "../UI/Card";
+import CardSkeleton from "../UI/CardSkeleton";
 
 const ExploreItems = () => {
   const [exploreItems, setExploreItems] = useState([]);
@@ -55,15 +56,13 @@ async function filterNfts(value) {
       </div>
 
       {loading
-  ? new Array(16).fill(0).map((_, index) => (
+  ? new Array(8).fill(0).map((_, index) => (
       <div
         key={index}
         className="d-item col-lg-3 col-md-6 col-sm-6 col-12"
         style={{ display: "block" }}
       >
-        <div className="nft__item">
-          <div className="exploreItems__img--skeleton skeleton" />
-        </div>
+        <CardSkeleton />
       </div>
     ))
   : exploreItems.slice(0, visibleItems).map((item, index) => (
