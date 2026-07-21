@@ -12360,6 +12360,7 @@ height: 40px;
   }
 
   /* author page skeleton */
+
   .author__img--skeleton {
     width: 150px;
     height: 150px;
@@ -12394,6 +12395,61 @@ height: 40px;
     width: 100px;
     border-radius: 10px;
   }
+
+  /* item-details skeleton */
+
+  .item__img__skeleton {
+    width: 546px;
+    height: 546px;
+  }
+
+  .item__title--skeleton {
+    width: 400px;
+    height: 42px;
+  }
+
+  .item__views--skeleton {
+    width: 80px;
+    height: 30px;
+  }
+
+  .item__likes--skeleton {
+    width: 80px;
+    height: 30px;
+  }
+
+  .item__description--skeleton {
+    width: 538px;
+    height: 78px;
+  }
+
+  .item__ownerImg--skeleton {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+
+  .item__ownerName--skeleton {
+    width: 100px;
+    height: 16px
+  }
+
+  .item__creatorImg--skeleton {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+
+  .item__creatorName--skeleton {
+    width: 100px;
+    height: 16px
+  }
+
+  .item__price--skeleton {
+    height: 37px;
+    width: 65px;
+  }
+
 
 /* new table */
 
