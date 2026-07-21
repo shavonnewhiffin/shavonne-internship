@@ -11,12 +11,12 @@ const TopSellers = () => {
       const { data } = await axios.get(
         "https://us-central1-nft-cloud-functions.cloudfunctions.net/topSellers"
       );
-      console.log(data);
       setTopSellers(data);
       setLoading(false);
     } catch {
-      setLoading(false);
       console.error("We had trouble pulling the Top Sellers");
+    } finally {
+      setLoading(false);
     }
   }
 
