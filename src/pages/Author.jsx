@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AuthorBanner from "../images/author_banner.jpg";
 import AuthorItems from "../components/author/AuthorItems";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 
 const Author = () => {
@@ -50,7 +50,30 @@ const Author = () => {
         <section aria-label="section">
           <div className="container">
             <div className="row">
-              <div className="col-md-12">
+              <div className="col-md-12">{loading? ( <div className="d_profile de-flex">
+                  <div className="de-flex-col">
+                    <div className="profile_avatar">
+                      <div className="author__img--skeleton skeleton" />
+
+                      <i className="fa fa-check"></i>
+                      <div className="profile_name">
+                        <h4 className="">
+                          <div className="author__title--skeleton skeleton"/>
+                          <div className="author__tag--skeleton skeleton"/>
+                          <div id="wallet" className="author__wallet--skeleton skeleton"/>
+                        </h4>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="profile_follow de-flex">
+                    <div className="de-flex-col">
+                      <div className="author__followers--skeleton skeleton"/>
+                      <div className="author__follow--skeleton skeleton"/>
+
+                    </div>
+                  </div>
+                </div>
+                ) : (               
                 <div className="d_profile de-flex">
                   <div className="de-flex-col">
                     <div className="profile_avatar">
@@ -84,6 +107,7 @@ const Author = () => {
                     </div>
                   </div>
                 </div>
+              )}
               </div>
 
               <div className="col-md-12">

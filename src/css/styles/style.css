@@ -12359,6 +12359,42 @@ height: 40px;
     overflow: hidden;
   }
 
+  /* author page skeleton */
+  .author__img--skeleton {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+  }
+
+  .author__title--skeleton {
+    height: 16px;
+    width: 200px;
+    margin-bottom: 8px;
+  }
+
+  .author__tag--skeleton {
+    height: 16px;
+    width: 100px;
+    margin-bottom: 8px;
+  }
+
+  .author__wallet--skeleton {
+    height: 16px;
+    width: 300px;
+  }
+
+  .author__followers--skeleton {
+    height: 16px;
+    width: 100px;
+    margin-right: 32px;
+  }
+
+  .author__follow--skeleton {
+    height: 40px;
+    width: 100px;
+    border-radius: 10px;
+  }
+
 /* new table */
 
 .de_table {
