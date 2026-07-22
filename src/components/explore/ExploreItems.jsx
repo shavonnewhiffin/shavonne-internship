@@ -67,6 +67,7 @@ async function filterNfts(value) {
     ))
   : exploreItems.slice(0, visibleItems).map((item, index) => (
       <div
+      data-aos="fade-in" data-aos-delay="100" data-aos-duration="1000"
         key={item.nftId || index}
         className="d-item col-lg-3 col-md-6 col-sm-6 col-12"
         style={{ display: "block" }}
