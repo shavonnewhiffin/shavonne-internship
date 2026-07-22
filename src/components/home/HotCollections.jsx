@@ -5,6 +5,7 @@ import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 
+
 const carouselOptions = {
   className: "owl-theme",
   loop: true,
@@ -44,7 +45,7 @@ const HotCollections = () => {
 
 
   return (
-    <section id="section-collections" className="no-bottom">
+    <section data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000" id="section-collections" className="no-bottom">
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
