@@ -14,6 +14,7 @@ const Author = () => {
     fetchAuthorDetails(authorId);
   }, []);
 
+  // Any comment
   async function fetchAuthorDetails(authorId) {
     try {
       const { data } = await axios.get(
