@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
@@ -46,7 +45,7 @@ const NewItems = () => {
 
   return (
     <>
-      <section id="section-items" className="no-bottom" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000" id="section-collections" >
+      <section id="section-items" className="no-bottom" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
         <div className="container">
           <div className="row">
             <div className="col-lg-12">

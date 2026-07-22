@@ -12,7 +12,7 @@ const Author = () => {
 
   useEffect(() => {
     fetchAuthorDetails(authorId);
-  }, []);
+  }, [authorId]);
 
   async function fetchAuthorDetails(authorId) {
     try {

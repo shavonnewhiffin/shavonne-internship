@@ -56,7 +56,7 @@ const ItemDetails = () => {
                   </div>
                   <div className="col-md-6">
                     <div className="item_info">
-                      <h2 className="item__title--skeleton skeleton" />
+                      <h2 className="item__title--skeleton skeleton" aria-hidden="true" />
                       <div className="item_info_counts">
                         <div className="item__views--skeleton skeleton">
                           <i className="fa fa-eye"></i>
