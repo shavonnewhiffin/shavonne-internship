@@ -103,12 +103,13 @@ const ItemDetails = () => {
                 <>
                   <div className="col-md-6 text-center">
                     <img
+                     data-aos="fade-in" data-aos-delay="100" data-aos-duration="1000"
                       src={nftImage}
                       className="img-fluid img-rounded mb-sm-30 nft-image"
                       alt=""
                     />
                   </div>
-                  <div className="col-md-6">
+                  <div className="col-md-6"  data-aos="fade-in" data-aos-delay="100" data-aos-duration="1000">
                     <div className="item_info">
                       <h2>{title}</h2>
 
