@@ -10,6 +10,7 @@ const Author = () => {
       <div className="no-bottom no-top" id="content">
         <div id="top"></div>
 
+{/* From main, do not remove */}
         <section
           id="profile_banner"
           aria-label="section"
