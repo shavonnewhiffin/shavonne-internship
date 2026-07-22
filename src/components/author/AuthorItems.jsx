@@ -45,6 +45,7 @@ const AuthorItems = () => {
                 <div
                   className="col-lg-3 col-md-6 col-sm-6 col-xs-12"
                   key={item.id}
+                  data-aos="fade-in" data-aos-delay="100" data-aos-duration="1000"
                 >
                   <div className="nft__item">
                     <div className="author_list_pp">

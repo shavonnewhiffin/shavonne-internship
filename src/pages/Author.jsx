@@ -50,7 +50,7 @@ const Author = () => {
         <section aria-label="section">
           <div className="container">
             <div className="row">
-              <div className="col-md-12">{loading? ( <div className="d_profile de-flex">
+              <div className="col-md-12">{loading? ( <div className="d_profile de-flex" data-aos="fade-in" data-aos-delay="100" data-aos-duration="1000">
                   <div className="de-flex-col">
                     <div className="profile_avatar">
                       <div className="author__img--skeleton skeleton" />
@@ -74,7 +74,7 @@ const Author = () => {
                   </div>
                 </div>
                 ) : (               
-                <div className="d_profile de-flex">
+                <div className="d_profile de-flex" >
                   <div className="de-flex-col">
                     <div className="profile_avatar">
                       <img src={authorDetails.authorImage} alt="" />
